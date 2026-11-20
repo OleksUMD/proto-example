@@ -18,5 +18,5 @@ service HelloService {
 }
 
 service HelloMultiStream {
-  rpc SayHello(HelloRequest) returns (stream HelloResponse) {}
+  rpc ManyHello(HelloRequest) returns (stream HelloResponse) {}
 }
