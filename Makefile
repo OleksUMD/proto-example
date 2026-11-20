@@ -16,8 +16,8 @@ clean:
 protoc:
 	protoc --go_opt=module=$(GO_MODULE) \
 		--go_out=. \
-		--go_opt_grpc=module=$(GO_MODULE) \
-		--go_grpc_out=. \
+		--go-opt_grpc=module=$(GO_MODULE) \
+		--go-grpc_out=. \
 		./proto/hello/*.proto \
 		./proto/payment/*.proto \
 		./proto/transaction/*.proto
