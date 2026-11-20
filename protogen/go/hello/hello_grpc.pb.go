@@ -121,14 +121,14 @@ var HelloService_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	HelloMultiStream_SayHello_FullMethodName = "/hello.HelloMultiStream/SayHello"
+	HelloMultiStream_ManyHello_FullMethodName = "/hello.HelloMultiStream/ManyHello"
 )
 
 // HelloMultiStreamClient is the client API for HelloMultiStream service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type HelloMultiStreamClient interface {
-	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[HelloResponse], error)
+	ManyHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[HelloResponse], error)
 }
 
 type helloMultiStreamClient struct {
@@ -139,9 +139,9 @@ func NewHelloMultiStreamClient(cc grpc.ClientConnInterface) HelloMultiStreamClie
 	return &helloMultiStreamClient{cc}
 }
 
-func (c *helloMultiStreamClient) SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[HelloResponse], error) {
+func (c *helloMultiStreamClient) ManyHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[HelloResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &HelloMultiStream_ServiceDesc.Streams[0], HelloMultiStream_SayHello_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &HelloMultiStream_ServiceDesc.Streams[0], HelloMultiStream_ManyHello_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -156,13 +156,13 @@ func (c *helloMultiStreamClient) SayHello(ctx context.Context, in *HelloRequest,
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type HelloMultiStream_SayHelloClient = grpc.ServerStreamingClient[HelloResponse]
+type HelloMultiStream_ManyHelloClient = grpc.ServerStreamingClient[HelloResponse]
 
 // HelloMultiStreamServer is the server API for HelloMultiStream service.
 // All implementations must embed UnimplementedHelloMultiStreamServer
 // for forward compatibility.
 type HelloMultiStreamServer interface {
-	SayHello(*HelloRequest, grpc.ServerStreamingServer[HelloResponse]) error
+	ManyHello(*HelloRequest, grpc.ServerStreamingServer[HelloResponse]) error
 	mustEmbedUnimplementedHelloMultiStreamServer()
 }
 
@@ -173,8 +173,8 @@ type HelloMultiStreamServer interface {
 // pointer dereference when methods are called.
 type UnimplementedHelloMultiStreamServer struct{}
 
-func (UnimplementedHelloMultiStreamServer) SayHello(*HelloRequest, grpc.ServerStreamingServer[HelloResponse]) error {
-	return status.Error(codes.Unimplemented, "method SayHello not implemented")
+func (UnimplementedHelloMultiStreamServer) ManyHello(*HelloRequest, grpc.ServerStreamingServer[HelloResponse]) error {
+	return status.Error(codes.Unimplemented, "method ManyHello not implemented")
 }
 func (UnimplementedHelloMultiStreamServer) mustEmbedUnimplementedHelloMultiStreamServer() {}
 func (UnimplementedHelloMultiStreamServer) testEmbeddedByValue()                          {}
@@ -197,16 +197,16 @@ func RegisterHelloMultiStreamServer(s grpc.ServiceRegistrar, srv HelloMultiStrea
 	s.RegisterService(&HelloMultiStream_ServiceDesc, srv)
 }
 
-func _HelloMultiStream_SayHello_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _HelloMultiStream_ManyHello_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(HelloRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(HelloMultiStreamServer).SayHello(m, &grpc.GenericServerStream[HelloRequest, HelloResponse]{ServerStream: stream})
+	return srv.(HelloMultiStreamServer).ManyHello(m, &grpc.GenericServerStream[HelloRequest, HelloResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type HelloMultiStream_SayHelloServer = grpc.ServerStreamingServer[HelloResponse]
+type HelloMultiStream_ManyHelloServer = grpc.ServerStreamingServer[HelloResponse]
 
 // HelloMultiStream_ServiceDesc is the grpc.ServiceDesc for HelloMultiStream service.
 // It's only intended for direct use with grpc.RegisterService,
@@ -217,8 +217,8 @@ var HelloMultiStream_ServiceDesc = grpc.ServiceDesc{
 	Methods:     []grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "SayHello",
-			Handler:       _HelloMultiStream_SayHello_Handler,
+			StreamName:    "ManyHello",
+			Handler:       _HelloMultiStream_ManyHello_Handler,
 			ServerStreams: true,
 		},
 	},
