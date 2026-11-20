@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package transaction;
+
+option go_package = "github.com/OleksUMD/proto-example/protogen/go/transaction";
+
+message CartRequest {
+  string name = 1;
+}
+
+message CartResponse {
+  string greet = 1;
+}

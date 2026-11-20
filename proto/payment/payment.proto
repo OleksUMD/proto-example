@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package payment;
+
+option go_package = "github.com/OleksUMD/proto-example/protogen/go/payment";
+
+message PaymentRequest {
+  string name = 1;
+}
+
+message PaymentResponse {
+  string greet = 1;
+}
