@@ -126,10 +126,9 @@ const file_proto_hello_hello_proto_rawDesc = "" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
 	"\x03age\x18\x02 \x01(\rR\x03age\"%\n" +
 	"\rHelloResponse\x12\x14\n" +
-	"\x05greet\x18\x01 \x01(\tR\x05greet2G\n" +
+	"\x05greet\x18\x01 \x01(\tR\x05greet2\x83\x01\n" +
 	"\fHelloService\x127\n" +
-	"\bSayHello\x12\x13.hello.HelloRequest\x1a\x14.hello.HelloResponse\"\x002N\n" +
-	"\x10HelloMultiStream\x12:\n" +
+	"\bSayHello\x12\x13.hello.HelloRequest\x1a\x14.hello.HelloResponse\"\x00\x12:\n" +
 	"\tManyHello\x12\x13.hello.HelloRequest\x1a\x14.hello.HelloResponse\"\x000\x01B5Z3github.com/OleksUMD/proto-example/protogen/go/hellob\x06proto3"
 
 var (
@@ -151,9 +150,9 @@ var file_proto_hello_hello_proto_goTypes = []any{
 }
 var file_proto_hello_hello_proto_depIdxs = []int32{
 	0, // 0: hello.HelloService.SayHello:input_type -> hello.HelloRequest
-	0, // 1: hello.HelloMultiStream.ManyHello:input_type -> hello.HelloRequest
+	0, // 1: hello.HelloService.ManyHello:input_type -> hello.HelloRequest
 	1, // 2: hello.HelloService.SayHello:output_type -> hello.HelloResponse
-	1, // 3: hello.HelloMultiStream.ManyHello:output_type -> hello.HelloResponse
+	1, // 3: hello.HelloService.ManyHello:output_type -> hello.HelloResponse
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -174,7 +173,7 @@ func file_proto_hello_hello_proto_init() {
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
-			NumServices:   2,
+			NumServices:   1,
 		},
 		GoTypes:           file_proto_hello_hello_proto_goTypes,
 		DependencyIndexes: file_proto_hello_hello_proto_depIdxs,
