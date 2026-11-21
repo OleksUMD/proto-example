@@ -10,7 +10,7 @@ message CurrentBalanceRequest {
 }
 
 message CurrentBalanceResponse {
-  uint32 amount = 1;
+  double amount = 1;
   google.type.Date current_date = 2;
 }
 
