@@ -22,6 +22,7 @@ const (
 	HelloService_SayHello_FullMethodName        = "/hello.HelloService/SayHello"
 	HelloService_ManyHello_FullMethodName       = "/hello.HelloService/ManyHello"
 	HelloService_HelloToEveryOne_FullMethodName = "/hello.HelloService/HelloToEveryOne"
+	HelloService_HelloContinuous_FullMethodName = "/hello.HelloService/HelloContinuous"
 )
 
 // HelloServiceClient is the client API for HelloService service.
@@ -31,6 +32,7 @@ type HelloServiceClient interface {
 	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error)
 	ManyHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[HelloResponse], error)
 	HelloToEveryOne(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[HelloRequest, HelloResponse], error)
+	HelloContinuous(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[HelloRequest, HelloResponse], error)
 }
 
 type helloServiceClient struct {
@@ -83,6 +85,19 @@ func (c *helloServiceClient) HelloToEveryOne(ctx context.Context, opts ...grpc.C
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type HelloService_HelloToEveryOneClient = grpc.ClientStreamingClient[HelloRequest, HelloResponse]
 
+func (c *helloServiceClient) HelloContinuous(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[HelloRequest, HelloResponse], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &HelloService_ServiceDesc.Streams[2], HelloService_HelloContinuous_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[HelloRequest, HelloResponse]{ClientStream: stream}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type HelloService_HelloContinuousClient = grpc.BidiStreamingClient[HelloRequest, HelloResponse]
+
 // HelloServiceServer is the server API for HelloService service.
 // All implementations must embed UnimplementedHelloServiceServer
 // for forward compatibility.
@@ -90,6 +105,7 @@ type HelloServiceServer interface {
 	SayHello(context.Context, *HelloRequest) (*HelloResponse, error)
 	ManyHello(*HelloRequest, grpc.ServerStreamingServer[HelloResponse]) error
 	HelloToEveryOne(grpc.ClientStreamingServer[HelloRequest, HelloResponse]) error
+	HelloContinuous(grpc.BidiStreamingServer[HelloRequest, HelloResponse]) error
 	mustEmbedUnimplementedHelloServiceServer()
 }
 
@@ -108,6 +124,9 @@ func (UnimplementedHelloServiceServer) ManyHello(*HelloRequest, grpc.ServerStrea
 }
 func (UnimplementedHelloServiceServer) HelloToEveryOne(grpc.ClientStreamingServer[HelloRequest, HelloResponse]) error {
 	return status.Error(codes.Unimplemented, "method HelloToEveryOne not implemented")
+}
+func (UnimplementedHelloServiceServer) HelloContinuous(grpc.BidiStreamingServer[HelloRequest, HelloResponse]) error {
+	return status.Error(codes.Unimplemented, "method HelloContinuous not implemented")
 }
 func (UnimplementedHelloServiceServer) mustEmbedUnimplementedHelloServiceServer() {}
 func (UnimplementedHelloServiceServer) testEmbeddedByValue()                      {}
@@ -166,6 +185,13 @@ func _HelloService_HelloToEveryOne_Handler(srv interface{}, stream grpc.ServerSt
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type HelloService_HelloToEveryOneServer = grpc.ClientStreamingServer[HelloRequest, HelloResponse]
 
+func _HelloService_HelloContinuous_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(HelloServiceServer).HelloContinuous(&grpc.GenericServerStream[HelloRequest, HelloResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type HelloService_HelloContinuousServer = grpc.BidiStreamingServer[HelloRequest, HelloResponse]
+
 // HelloService_ServiceDesc is the grpc.ServiceDesc for HelloService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -187,6 +213,12 @@ var HelloService_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "HelloToEveryOne",
 			Handler:       _HelloService_HelloToEveryOne_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "HelloContinuous",
+			Handler:       _HelloService_HelloContinuous_Handler,
+			ServerStreams: true,
 			ClientStreams: true,
 		},
 	},
