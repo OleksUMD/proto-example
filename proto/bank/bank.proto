@@ -6,7 +6,7 @@ import "proto/google/type/date.proto";
 option go_package = "github.com/OleksUMD/proto-example/protogen/go/bank";
 
 message CurrentBalanceRequest {
-  uint32 account_number = 1;
+  string account_number = 1;
 }
 
 message CurrentBalanceResponse {

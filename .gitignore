@@ -32,3 +32,6 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# Empty protofile that helps YAAK in resolving other protofiles imports
+stub.proto
