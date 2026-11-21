@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        v3.21.12
-// source: proto/bank/bank.proto
+// source: proto/bank/type/account.proto
 
 package bank
 
@@ -24,14 +24,14 @@ const (
 
 type CurrentBalanceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccountNumber uint32                 `protobuf:"varint,1,opt,name=account_number,json=accountNumber,proto3" json:"account_number,omitempty"`
+	AccountNumber string                 `protobuf:"bytes,1,opt,name=account_number,json=accountNumber,proto3" json:"account_number,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CurrentBalanceRequest) Reset() {
 	*x = CurrentBalanceRequest{}
-	mi := &file_proto_bank_bank_proto_msgTypes[0]
+	mi := &file_proto_bank_type_account_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *CurrentBalanceRequest) String() string {
 func (*CurrentBalanceRequest) ProtoMessage() {}
 
 func (x *CurrentBalanceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_bank_bank_proto_msgTypes[0]
+	mi := &file_proto_bank_type_account_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,14 +56,14 @@ func (x *CurrentBalanceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CurrentBalanceRequest.ProtoReflect.Descriptor instead.
 func (*CurrentBalanceRequest) Descriptor() ([]byte, []int) {
-	return file_proto_bank_bank_proto_rawDescGZIP(), []int{0}
+	return file_proto_bank_type_account_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CurrentBalanceRequest) GetAccountNumber() uint32 {
+func (x *CurrentBalanceRequest) GetAccountNumber() string {
 	if x != nil {
 		return x.AccountNumber
 	}
-	return 0
+	return ""
 }
 
 type CurrentBalanceResponse struct {
@@ -76,7 +76,7 @@ type CurrentBalanceResponse struct {
 
 func (x *CurrentBalanceResponse) Reset() {
 	*x = CurrentBalanceResponse{}
-	mi := &file_proto_bank_bank_proto_msgTypes[1]
+	mi := &file_proto_bank_type_account_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -88,7 +88,7 @@ func (x *CurrentBalanceResponse) String() string {
 func (*CurrentBalanceResponse) ProtoMessage() {}
 
 func (x *CurrentBalanceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_bank_bank_proto_msgTypes[1]
+	mi := &file_proto_bank_type_account_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -101,7 +101,7 @@ func (x *CurrentBalanceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CurrentBalanceResponse.ProtoReflect.Descriptor instead.
 func (*CurrentBalanceResponse) Descriptor() ([]byte, []int) {
-	return file_proto_bank_bank_proto_rawDescGZIP(), []int{1}
+	return file_proto_bank_type_account_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CurrentBalanceResponse) GetAmount() float64 {
@@ -118,68 +118,64 @@ func (x *CurrentBalanceResponse) GetCurrentDate() *date.Date {
 	return nil
 }
 
-var File_proto_bank_bank_proto protoreflect.FileDescriptor
+var File_proto_bank_type_account_proto protoreflect.FileDescriptor
 
-const file_proto_bank_bank_proto_rawDesc = "" +
+const file_proto_bank_type_account_proto_rawDesc = "" +
 	"\n" +
-	"\x15proto/bank/bank.proto\x12\x04bank\x1a\x1cproto/google/type/date.proto\">\n" +
+	"\x1dproto/bank/type/account.proto\x12\x04bank\x1a\x1cproto/google/type/date.proto\">\n" +
 	"\x15CurrentBalanceRequest\x12%\n" +
-	"\x0eaccount_number\x18\x01 \x01(\rR\raccountNumber\"f\n" +
+	"\x0eaccount_number\x18\x01 \x01(\tR\raccountNumber\"f\n" +
 	"\x16CurrentBalanceResponse\x12\x16\n" +
 	"\x06amount\x18\x01 \x01(\x01R\x06amount\x124\n" +
-	"\fcurrent_date\x18\x02 \x01(\v2\x11.google.type.DateR\vcurrentDate2_\n" +
-	"\vBankService\x12P\n" +
-	"\x11GetCurrentBalance\x12\x1b.bank.CurrentBalanceRequest\x1a\x1c.bank.CurrentBalanceResponse\"\x00B4Z2github.com/OleksUMD/proto-example/protogen/go/bankb\x06proto3"
+	"\fcurrent_date\x18\x02 \x01(\v2\x11.google.type.DateR\vcurrentDateB4Z2github.com/OleksUMD/proto-example/protogen/go/bankb\x06proto3"
 
 var (
-	file_proto_bank_bank_proto_rawDescOnce sync.Once
-	file_proto_bank_bank_proto_rawDescData []byte
+	file_proto_bank_type_account_proto_rawDescOnce sync.Once
+	file_proto_bank_type_account_proto_rawDescData []byte
 )
 
-func file_proto_bank_bank_proto_rawDescGZIP() []byte {
-	file_proto_bank_bank_proto_rawDescOnce.Do(func() {
-		file_proto_bank_bank_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_bank_bank_proto_rawDesc), len(file_proto_bank_bank_proto_rawDesc)))
+func file_proto_bank_type_account_proto_rawDescGZIP() []byte {
+	file_proto_bank_type_account_proto_rawDescOnce.Do(func() {
+		file_proto_bank_type_account_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_bank_type_account_proto_rawDesc), len(file_proto_bank_type_account_proto_rawDesc)))
 	})
-	return file_proto_bank_bank_proto_rawDescData
+	return file_proto_bank_type_account_proto_rawDescData
 }
 
-var file_proto_bank_bank_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_proto_bank_bank_proto_goTypes = []any{
+var file_proto_bank_type_account_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_bank_type_account_proto_goTypes = []any{
 	(*CurrentBalanceRequest)(nil),  // 0: bank.CurrentBalanceRequest
 	(*CurrentBalanceResponse)(nil), // 1: bank.CurrentBalanceResponse
 	(*date.Date)(nil),              // 2: google.type.Date
 }
-var file_proto_bank_bank_proto_depIdxs = []int32{
+var file_proto_bank_type_account_proto_depIdxs = []int32{
 	2, // 0: bank.CurrentBalanceResponse.current_date:type_name -> google.type.Date
-	0, // 1: bank.BankService.GetCurrentBalance:input_type -> bank.CurrentBalanceRequest
-	1, // 2: bank.BankService.GetCurrentBalance:output_type -> bank.CurrentBalanceResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_proto_bank_bank_proto_init() }
-func file_proto_bank_bank_proto_init() {
-	if File_proto_bank_bank_proto != nil {
+func init() { file_proto_bank_type_account_proto_init() }
+func file_proto_bank_type_account_proto_init() {
+	if File_proto_bank_type_account_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_bank_bank_proto_rawDesc), len(file_proto_bank_bank_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_bank_type_account_proto_rawDesc), len(file_proto_bank_type_account_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   0,
 		},
-		GoTypes:           file_proto_bank_bank_proto_goTypes,
-		DependencyIndexes: file_proto_bank_bank_proto_depIdxs,
-		MessageInfos:      file_proto_bank_bank_proto_msgTypes,
+		GoTypes:           file_proto_bank_type_account_proto_goTypes,
+		DependencyIndexes: file_proto_bank_type_account_proto_depIdxs,
+		MessageInfos:      file_proto_bank_type_account_proto_msgTypes,
 	}.Build()
-	File_proto_bank_bank_proto = out.File
-	file_proto_bank_bank_proto_goTypes = nil
-	file_proto_bank_bank_proto_depIdxs = nil
+	File_proto_bank_type_account_proto = out.File
+	file_proto_bank_type_account_proto_goTypes = nil
+	file_proto_bank_type_account_proto_depIdxs = nil
 }
