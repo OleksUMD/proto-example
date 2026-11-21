@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package bank;
 
+import "proto/bank/type/account.proto";
+
 option go_package = "github.com/OleksUMD/proto-example/protogen/go/bank";
 
 service BankService {
