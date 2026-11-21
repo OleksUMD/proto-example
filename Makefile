@@ -20,6 +20,7 @@ protoc:
 		--go-grpc_out=. \
 		./proto/hello/*.proto \
 		./proto/bank/*.proto \
+		./proto/bank/type/*.proto \
 		./proto/payment/*.proto \
 		./proto/transaction/*.proto
 
