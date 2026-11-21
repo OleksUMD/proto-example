@@ -68,7 +68,7 @@ func (x *CurrentBalanceRequest) GetAccountNumber() uint32 {
 
 type CurrentBalanceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Amount        uint32                 `protobuf:"varint,1,opt,name=amount,proto3" json:"amount,omitempty"`
+	Amount        float64                `protobuf:"fixed64,1,opt,name=amount,proto3" json:"amount,omitempty"`
 	CurrentDate   *date.Date             `protobuf:"bytes,2,opt,name=current_date,json=currentDate,proto3" json:"current_date,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -104,7 +104,7 @@ func (*CurrentBalanceResponse) Descriptor() ([]byte, []int) {
 	return file_proto_bank_bank_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CurrentBalanceResponse) GetAmount() uint32 {
+func (x *CurrentBalanceResponse) GetAmount() float64 {
 	if x != nil {
 		return x.Amount
 	}
@@ -126,7 +126,7 @@ const file_proto_bank_bank_proto_rawDesc = "" +
 	"\x15CurrentBalanceRequest\x12%\n" +
 	"\x0eaccount_number\x18\x01 \x01(\rR\raccountNumber\"f\n" +
 	"\x16CurrentBalanceResponse\x12\x16\n" +
-	"\x06amount\x18\x01 \x01(\rR\x06amount\x124\n" +
+	"\x06amount\x18\x01 \x01(\x01R\x06amount\x124\n" +
 	"\fcurrent_date\x18\x02 \x01(\v2\x11.google.type.DateR\vcurrentDate2_\n" +
 	"\vBankService\x12P\n" +
 	"\x11GetCurrentBalance\x12\x1b.bank.CurrentBalanceRequest\x1a\x1c.bank.CurrentBalanceResponse\"\x00B4Z2github.com/OleksUMD/proto-example/protogen/go/bankb\x06proto3"
