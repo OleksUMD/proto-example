@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package bank;
+
+import "proto/google/type/date.proto";
+option go_package = "github.com/OleksUMD/proto-example/protogen/go/bank";
+
+message CurrentBalanceRequest {
+  uint32 account_number = 1;
+}
+
+message CurrentBalanceResponse {
+  uint32 amount = 1;
+  google.type.Date current_date = 2;
+}
+
+service BankService {
+  rpc GetCurrentBalance(CurrentBalanceRequest) returns (CurrentBalanceResponse) {}
+}
