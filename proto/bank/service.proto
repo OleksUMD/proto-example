@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package bank;
+
+option go_package = "github.com/OleksUMD/proto-example/protogen/go/bank";
+
+service BankService {
+  rpc GetCurrentBalance(CurrentBalanceRequest) returns (CurrentBalanceResponse) {}
+}
