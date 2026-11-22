@@ -15,7 +15,7 @@ message Transaction {
   string account_number = 1 [json_name = "account_number"];
   TransactionType type = 2;
   double amount = 3;
-  gogle.type.DateTime timestamp = 4;
+  google.type.DateTime timestamp = 4;
   string notes = 5;
 }
 
