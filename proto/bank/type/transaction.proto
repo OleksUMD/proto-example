@@ -16,7 +16,7 @@ message Transaction {
   TransactionType type = 2;
   double amount = 3;
   gogle.type.DateTime timestamp = 4;
-  string notes = 4;
+  string notes = 5;
 }
 
 message TransactionSummary {
