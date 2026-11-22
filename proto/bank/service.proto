@@ -11,5 +11,5 @@ option go_package = "github.com/OleksUMD/proto-example/protogen/go/bank";
 service BankService {
   rpc GetCurrentBalance(CurrentBalanceRequest) returns (CurrentBalanceResponse) {}
   rpc FetchExchangeRates(ExchangeRateRequest) returns (stream ExchangeRateResponse) {}
-  rpc SummarizeTransactions(stream Transaction) returns (stream TransactionSummary) {}
+  rpc SummarizeTransactions(Transaction) returns (stream TransactionSummary) {}
 }
