@@ -28,7 +28,7 @@ const file_proto_bank_service_proto_rawDesc = "" +
 	"\vBankService\x12P\n" +
 	"\x11GetCurrentBalance\x12\x1b.bank.CurrentBalanceRequest\x1a\x1c.bank.CurrentBalanceResponse\"\x00\x12O\n" +
 	"\x12FetchExchangeRates\x12\x19.bank.ExchangeRateRequest\x1a\x1a.bank.ExchangeRateResponse\"\x000\x01\x12H\n" +
-	"\x15SummarizeTransactions\x12\x11.bank.Transaction\x1a\x18.bank.TransactionSummary\"\x000\x01B4Z2github.com/OleksUMD/proto-example/protogen/go/bankb\x06proto3"
+	"\x15SummarizeTransactions\x12\x11.bank.Transaction\x1a\x18.bank.TransactionSummary\"\x00(\x01B4Z2github.com/OleksUMD/proto-example/protogen/go/bankb\x06proto3"
 
 var file_proto_bank_service_proto_goTypes = []any{
 	(*CurrentBalanceRequest)(nil),  // 0: bank.CurrentBalanceRequest
