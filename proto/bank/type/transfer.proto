@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package bank;
+
+import "proto/google/type/datetime.proto";
+option go_package = "github.com/OleksUMD/proto-example/protogen/go/bank";
+
+enum TransferStatus {
+  TRANSACTION_TYPE_UNSPECIFIED = 0;
+  TRANSACTION_TYPE_SUCCESS = 1;
+  TRANSACTION_TYPE_FAILED = 2;
+}
+
+message TransferRequest {
+  string from_account_number = 1 [json_name = "from_account_number"];
+  string to_account_number = 2 [json_name = "to_account_number"];
+  string curency = 3;
+  double amount = 4;
+}
+
+message TransferResponse {
+  string from_account_number = 1 [json_name = "from_account_number"];
+  string to_account_number = 2 [json_name = "to_account_number"];
+  string curency = 3;
+  double amount = 4;
+  TransferStatus status = 5;
+  google.type.DateTime timestamp = 6;
+}
