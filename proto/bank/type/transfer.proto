@@ -6,9 +6,9 @@ import "proto/google/type/datetime.proto";
 option go_package = "github.com/OleksUMD/proto-example/protogen/go/bank";
 
 enum TransferStatus {
-  TRANSACTION_TYPE_UNSPECIFIED = 0;
-  TRANSACTION_TYPE_SUCCESS = 1;
-  TRANSACTION_TYPE_FAILED = 2;
+  TRANSFER_STATUS_UNSPECIFIED = 0;
+  TRANSFER_STATUS_SUCCESS = 1;
+  TRANSFER_STATUS_FAILED = 2;
 }
 
 message TransferRequest {
