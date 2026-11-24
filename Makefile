@@ -22,7 +22,8 @@ protoc:
 		./proto/bank/*.proto \
 		./proto/bank/type/*.proto \
 		./proto/payment/*.proto \
-		./proto/transaction/*.proto
+		./proto/transaction/*.proto \
+		./proto/resiliency/*.proto
 
 pipeline-init:
 	sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
