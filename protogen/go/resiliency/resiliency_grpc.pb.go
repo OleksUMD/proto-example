@@ -29,7 +29,9 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ResiliencyServiceClient interface {
+	// The generated OpenAPI Summary for UnaryResiliency
 	UnaryResiliency(ctx context.Context, in *ResiliencyRequest, opts ...grpc.CallOption) (*ResiliencyResponse, error)
+	// The generated OpenAPI Summary for ServerStreamingResiliency
 	ServerStreamingResiliency(ctx context.Context, in *ResiliencyRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ResiliencyResponse], error)
 	ClientStreamingResiliency(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[ResiliencyRequest, ResiliencyResponse], error)
 	BiStreamingResiliency(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[ResiliencyRequest, ResiliencyResponse], error)
@@ -102,7 +104,9 @@ type ResiliencyService_BiStreamingResiliencyClient = grpc.BidiStreamingClient[Re
 // All implementations must embed UnimplementedResiliencyServiceServer
 // for forward compatibility.
 type ResiliencyServiceServer interface {
+	// The generated OpenAPI Summary for UnaryResiliency
 	UnaryResiliency(context.Context, *ResiliencyRequest) (*ResiliencyResponse, error)
+	// The generated OpenAPI Summary for ServerStreamingResiliency
 	ServerStreamingResiliency(*ResiliencyRequest, grpc.ServerStreamingServer[ResiliencyResponse]) error
 	ClientStreamingResiliency(grpc.ClientStreamingServer[ResiliencyRequest, ResiliencyResponse]) error
 	BiStreamingResiliency(grpc.BidiStreamingServer[ResiliencyRequest, ResiliencyResponse]) error

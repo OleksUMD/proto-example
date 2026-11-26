@@ -7,6 +7,8 @@
 package resiliency
 
 import (
+	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -130,16 +132,24 @@ var File_proto_resiliency_resiliency_proto protoreflect.FileDescriptor
 const file_proto_resiliency_resiliency_proto_rawDesc = "" +
 	"\n" +
 	"!proto/resiliency/resiliency.proto\x12\n" +
-	"resiliency\"\x93\x01\n" +
-	"\x11ResiliencyRequest\x12,\n" +
-	"\x11min_delay_seconds\x18\x01 \x01(\x05R\x11min_delay_seconds\x12,\n" +
-	"\x11max_delay_seconds\x18\x02 \x01(\x05R\x11max_delay_seconds\x12\"\n" +
-	"\fstatus_codes\x18\x03 \x03(\rR\fstatus_codes\"8\n" +
-	"\x12ResiliencyResponse\x12\"\n" +
-	"\fdummy_string\x18\x01 \x01(\tR\fdummy_string2\x85\x03\n" +
-	"\x11ResiliencyService\x12R\n" +
-	"\x0fUnaryResiliency\x12\x1d.resiliency.ResiliencyRequest\x1a\x1e.resiliency.ResiliencyResponse\"\x00\x12^\n" +
-	"\x19ServerStreamingResiliency\x12\x1d.resiliency.ResiliencyRequest\x1a\x1e.resiliency.ResiliencyResponse\"\x000\x01\x12^\n" +
+	"resiliency\x1a\"proto/google/api/annotations.proto\x1a4proto/protoc_gen_openapiv2/options/annotations.proto\"\xbe\x02\n" +
+	"\x11ResiliencyRequest\x12d\n" +
+	"\x11min_delay_seconds\x18\x01 \x01(\x05B6\x92A32$Minimum delay in seconds (inclusive)J\x012\xa2\x02\aintegerR\x11min_delay_seconds\x12d\n" +
+	"\x11max_delay_seconds\x18\x02 \x01(\x05B6\x92A32$Maximum delay in seconds (inclusive)J\x012\xa2\x02\aintegerR\x11max_delay_seconds\x12]\n" +
+	"\fstatus_codes\x18\x03 \x03(\rB9\x92A624Array of gRPC status codes to be generated (numeric)R\fstatus_codes\"X\n" +
+	"\x12ResiliencyResponse\x12B\n" +
+	"\fdummy_string\x18\x01 \x01(\tB\x1e\x92A\x1b2\x19Dummy string for responseR\fdummy_string2\xb0\x06\n" +
+	"\x11ResiliencyService\x12\x83\x02\n" +
+	"\x0fUnaryResiliency\x12\x1d.resiliency.ResiliencyRequest\x1a\x1e.resiliency.ResiliencyResponse\"\xb0\x01\x92A\x8c\x01\x12\x1bSummary for UnaryResiliency\x1a\x1fDescription for UnaryResiliencyJ%\n" +
+	"\x03200\x12\x1e\n" +
+	"\x1cSample response, 200 when...J%\n" +
+	"\x03400\x12\x1e\n" +
+	"\x1cSample response, 400 when...\x82\xd3\xe4\x93\x02\x1a\x12\x18/api/resiliency/v1/unary\x12\xd6\x02\n" +
+	"\x19ServerStreamingResiliency\x12\x1d.resiliency.ResiliencyRequest\x1a\x1e.resiliency.ResiliencyResponse\"\xf7\x01\x92A\xa0\x01\x12%Summary for ServerStreamingResiliency\x1a)Description for ServerStreamingResiliencyJ%\n" +
+	"\x03200\x12\x1e\n" +
+	"\x1cSample response, 200 when...J%\n" +
+	"\x03400\x12\x1e\n" +
+	"\x1cSample response, 400 when...\x82\xd3\xe4\x93\x02M\x12K/api/resiliency/v1/server_streaming/{min_delay_seconds}/{max_delay_seconds}0\x01\x12^\n" +
 	"\x19ClientStreamingResiliency\x12\x1d.resiliency.ResiliencyRequest\x1a\x1e.resiliency.ResiliencyResponse\"\x00(\x01\x12\\\n" +
 	"\x15BiStreamingResiliency\x12\x1d.resiliency.ResiliencyRequest\x1a\x1e.resiliency.ResiliencyResponse\"\x00(\x010\x01B:Z8github.com/OleksUMD/proto-example/protogen/go/resiliencyb\x06proto3"
 
