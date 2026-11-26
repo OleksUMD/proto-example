@@ -1,4 +1,4 @@
-// Copyright 2026 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,20 +14,18 @@
 
 syntax = "proto3";
 
-package google.type;
+package google.api;
 
-option go_package = "google.golang.org/genproto/googleapis/type/fraction;fraction";
+import "proto/google/api/http.proto";
+import "google/protobuf/descriptor.proto";
+
+option go_package = "google.golang.org/genproto/googleapis/api/annotations;annotations";
 option java_multiple_files = true;
-option java_outer_classname = "FractionProto";
-option java_package = "com.google.type";
-option objc_class_prefix = "GTP";
+option java_outer_classname = "AnnotationsProto";
+option java_package = "com.google.api";
+option objc_class_prefix = "GAPI";
 
-// Represents a fraction in terms of a numerator divided by a denominator.
-message Fraction {
-  // The numerator in the fraction, e.g. 2 in 2/3.
-  int64 numerator = 1;
-
-  // The value by which the numerator is divided, e.g. 3 in 2/3. Must be
-  // positive.
-  int64 denominator = 2;
+extend google.protobuf.MethodOptions {
+  // See `HttpRule`.
+  HttpRule http = 72295728;
 }
