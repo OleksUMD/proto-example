@@ -2,21 +2,90 @@ syntax = "proto3";
 
 package resiliency;
 
+import "proto/google/api/annotations.proto";
+import "proto/protoc_gen_openapiv2/options/annotations.proto";
+
 option go_package = "github.com/OleksUMD/proto-example/protogen/go/resiliency";
 
 message ResiliencyRequest {
-  int32 min_delay_seconds = 1 [json_name = "min_delay_seconds"];
-  int32 max_delay_seconds = 2 [json_name = "max_delay_seconds"];
-  repeated uint32 status_codes = 3 [json_name = "status_codes"];
+  int32 min_delay_seconds = 1 [
+    json_name = "min_delay_seconds",
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Minimum delay in seconds (inclusive)",
+      format: "integer",
+      example: "2",
+    }
+  ];
+  int32 max_delay_seconds = 2 [
+    json_name = "max_delay_seconds",
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Maximum delay in seconds (inclusive)",
+      format: "integer",
+      example: "2",
+    }
+  ];
+  repeated uint32 status_codes = 3 [
+    json_name = "status_codes",
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Array of gRPC status codes to be generated (numeric)",
+    }
+  ];
 }
 
 message ResiliencyResponse {
-  string dummy_string = 1 [json_name = "dummy_string"];
+  string dummy_string = 1 [
+    json_name = "dummy_string",
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Dummy string for response",
+    }
+  ];
 }
 
 service ResiliencyService {
-  rpc UnaryResiliency(ResiliencyRequest) returns (ResiliencyResponse) {}
-  rpc ServerStreamingResiliency(ResiliencyRequest) returns (stream ResiliencyResponse) {}
+  // The generated OpenAPI Summary for UnaryResiliency
+  rpc UnaryResiliency(ResiliencyRequest) returns (ResiliencyResponse) {
+    option (google.api.http) = {
+      get: "/api/resiliency/v1/unary"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Summary for UnaryResiliency",
+      description: "Description for UnaryResiliency",
+      responses: {
+        key: "200"
+        value: {
+          description: "Sample response, 200 when..."
+        }
+      }
+      responses: {
+        key: "400"
+        value: {
+          description: "Sample response, 400 when..."
+        }
+      }
+    };
+  }
+  // The generated OpenAPI Summary for ServerStreamingResiliency
+  rpc ServerStreamingResiliency(ResiliencyRequest) returns (stream ResiliencyResponse) {
+    option (google.api.http) = {
+      get: "/api/resiliency/v1/server_streaming/{min_delay_seconds}/{max_delay_seconds}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Summary for ServerStreamingResiliency",
+      description: "Description for ServerStreamingResiliency",
+      responses: {
+        key: "200"
+        value: {
+          description: "Sample response, 200 when..."
+        }
+      }
+      responses: {
+        key: "400"
+        value: {
+          description: "Sample response, 400 when..."
+        }
+      }
+    };
+  }
   rpc ClientStreamingResiliency(stream ResiliencyRequest) returns (ResiliencyResponse) {}
   rpc BiStreamingResiliency(stream ResiliencyRequest) returns (stream ResiliencyResponse) {}
 }
